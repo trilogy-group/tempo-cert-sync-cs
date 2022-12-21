@@ -1,23 +1,28 @@
 {
   "timeZone": "Etc/UTC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "sheets": {
-    "macros": [{
-      "menuName": "RemoveCellHighlights",
-      "functionName": "RemoveCellHighlights"
-    }, {
-      "menuName": "RemoveSingleHighlights",
-      "functionName": "RemoveSingleHighlights",
-      "defaultShortcut": "Ctrl+Alt+Shift+1"
-    }, {
-      "menuName": "sortSheetsAsc",
-      "functionName": "sortSheetsAsc"
-    }, {
-      "menuName": "Untitled Macro",
-      "functionName": "UntitledMacro"
-    }]
+    "macros": [
+      {
+        "menuName": "RemoveCellHighlights",
+        "functionName": "RemoveCellHighlights"
+      },
+      {
+        "menuName": "RemoveSingleHighlights",
+        "functionName": "RemoveSingleHighlights",
+        "defaultShortcut": "Ctrl+Alt+Shift+1"
+      },
+      {
+        "menuName": "sortSheetsAsc",
+        "functionName": "sortSheetsAsc"
+      },
+      {
+        "menuName": "Untitled Macro",
+        "functionName": "UntitledMacro"
+      }
+    ]
+
   }
 }
