@@ -117,8 +117,8 @@ function syncCertSheet() {
   
   if(sheetName.indexOf("Cert-")>-1){
     var data = {
-      'gSheetId': '1AO8WbFqm1y1kj6csGWw3O14K7pAm37wJlh0q_Rk9QR0',
-      'certType': 'CS',
+      'certType': 'EM',
+      'gSheetId': '1xLf55Pv8OkYidRGQvc7CaGx62xqBX1wBSHdDcbWaF8g',
       'sheetName': sheetName
     };
     var options = {
@@ -126,7 +126,8 @@ function syncCertSheet() {
       'contentType': 'application/json',
       'payload' : JSON.stringify(data)
     };
-    var url = 'https://tpm.devflows.devfactory.com/12425_in1_prod_063_eng_tempo_rules_action';
+    var url = 'https://tpm.devflows.devfactory.com/10547_in1_prod_063_eng_tempo_rules';
+    url = 'https://tpm.devflows.devfactory.com/12425_in1_prod_063_eng_tempo_rules_action';
     UrlFetchApp.fetch(url, options);
 
     var message = 'Certification Sync has been invoked for "' + sheetName + '".  This sync may take up to 10 minutes to complete, please be patient.';
@@ -143,9 +144,9 @@ function syncCertSheet() {
 function clearRules() {
   
     var data = {
-       'clearRulesOnly': true,
-       'certType': 'CS',
-       'gSheetId': '1AO8WbFqm1y1kj6csGWw3O14K7pAm37wJlh0q_Rk9QR0'
+      'certType': 'EM',
+      'gSheetId': '1xLf55Pv8OkYidRGQvc7CaGx62xqBX1wBSHdDcbWaF8g',
+      'clearRulesOnly': true
     };
     var options = {
       'method' : 'post',
