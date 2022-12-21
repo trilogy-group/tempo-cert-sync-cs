@@ -113,7 +113,7 @@ function sheetnames() {
 
 function syncCertSheet() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var sheetName = sheet.getName(); 
+  var sheetName = sheet.getName();
   
   if(sheetName.indexOf("Cert-")>-1){
     var data = {
