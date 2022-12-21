@@ -64,6 +64,7 @@ function sortSheetsAsc() {
     var name = sheets[i].getName();
     if (name.startsWith("Cert-EM-")) {
       var newName = name.replace("Cert-EM-","Cert-");
+
       ss.getSheetByName(name).setName(newName);
       name = newName;
     }
@@ -114,48 +115,58 @@ function sheetnames() {
 function syncCertSheet() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var sheetName = sheet.getName();
-  
-  if(sheetName.indexOf("Cert-")>-1){
+
+
+  if (sheetName.indexOf("Cert-") > -1) {
     var data = {
-      'certType': 'EM',
-      'gSheetId': '1xLf55Pv8OkYidRGQvc7CaGx62xqBX1wBSHdDcbWaF8g',
-      'sheetName': sheetName
+      gSheetId: "1AO8WbFqm1y1kj6csGWw3O14K7pAm37wJlh0q_Rk9QR0",
+      certType: "CS",
+      sheetName: sheetName,
     };
     var options = {
-      'method' : 'post',
-      'contentType': 'application/json',
-      'payload' : JSON.stringify(data)
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(data),
     };
-    var url = 'https://tpm.devflows.devfactory.com/10547_in1_prod_063_eng_tempo_rules';
-    url = 'https://tpm.devflows.devfactory.com/12425_in1_prod_063_eng_tempo_rules_action';
+    var url =
+      "https://tpm.devflows.devfactory.com/12425_in1_prod_063_eng_tempo_rules_action";
     UrlFetchApp.fetch(url, options);
 
-    var message = 'Certification Sync has been invoked for "' + sheetName + '".  This sync may take up to 10 minutes to complete, please be patient.';
-    var title = '⏰ Tempo Certification ⏰';
+    var message =
+      'Certification Sync has been invoked for "' +
+      sheetName +
+      '".  This sync may take up to 10 minutes to complete, please be patient.';
+    var title = "⏰ Tempo Certification ⏰";
     SpreadsheetApp.getActiveSpreadsheet().toast(message, title, 5);
     setSynced(sheet);
   } else {
-    var message = 'Sheet name: ' + sheetName + ' is not a Certification Sheet!  Sync not invoked.';
-    var title = '⚠️ Tempo Certification ⚠️';
+    var message =
+      "Sheet name: " +
+      sheetName +
+      " is not a Certification Sheet!  Sync not invoked.";
+    var title = "⚠️ Tempo Certification ⚠️";
     SpreadsheetApp.getActiveSpreadsheet().toast(message, title, 5);
   }
 }
 
 function clearRules() {
-  
-    var data = {
-      'certType': 'EM',
-      'gSheetId': '1xLf55Pv8OkYidRGQvc7CaGx62xqBX1wBSHdDcbWaF8g',
-      'clearRulesOnly': true
-    };
-    var options = {
-      'method' : 'post',
-      'contentType': 'application/json',
-      'payload' : JSON.stringify(data)
-    };
-    UrlFetchApp.fetch('https://tpm.devflows.devfactory.com/11400_in1_prod_067_invoke_tempo_cert_sync_ii', options);
+  var data = {
+    gSheetId: "1AO8WbFqm1y1kj6csGWw3O14K7pAm37wJlh0q_Rk9QR0",
+    certType: "CS",
+    clearRulesOnly: true,
+  };
+  var options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(data),
+  };
+  UrlFetchApp.fetch(
+    "https://tpm.devflows.devfactory.com/11400_in1_prod_067_invoke_tempo_cert_sync_ii",
+    options
+  );
 
-    var message = 'Clear Rules automation has been invoked.  This process may take up to 5 minutes to complete.';
-    var title = '⚠️ Clear Rules ⚠️';
-    SpreadsheetApp.getActiveSpreadsheet().toast(message, title, 5);
+  var message =
+    "Clear Rules automation has been invoked.  This process may take up to 5 minutes to complete.";
+  var title = "⚠️ Clear Rules ⚠️";
+  SpreadsheetApp.getActiveSpreadsheet().toast(message, title, 5);
 }
