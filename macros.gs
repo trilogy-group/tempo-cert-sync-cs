@@ -68,7 +68,6 @@ function sortSheetsAsc() {
     var name = sheets[i].getName();
     if (name.startsWith("Cert-EM-")) {
       var newName = name.replace("Cert-EM-", "Cert-");
-
       ss.getSheetByName(name).setName(newName);
       name = newName;
     }
